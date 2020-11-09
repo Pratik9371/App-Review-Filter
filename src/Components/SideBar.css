@@ -1,0 +1,16 @@
+.sidebar {
+  margin-top: 80px;
+  border-right: 1px solid #eee;
+  position: fixed;
+}
+
+li {
+  cursor: pointer;
+}
+
+.countries,
+.versions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

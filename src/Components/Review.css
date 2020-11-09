@@ -1,0 +1,54 @@
+.top > li {
+  margin-left: 15px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.bottom > li {
+  margin-left: 15px;
+  margin-right: 25px;
+}
+
+.storeName {
+  background-color: #eee;
+  border-radius: 0.5em;
+  padding: 5px;
+}
+
+.card {
+  background-color: white;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(158, 155, 155, 0.19);
+  margin: auto;
+}
+
+.review {
+  position: absolute;
+  left: 300px;
+  margin-top: 80px;
+}
+
+.card-top > ul > li {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 1034px) {
+  .review {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 808px) {
+  .review {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 708px) {
+  .review {
+    width: 300px;
+  }
+}
