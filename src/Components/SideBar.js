@@ -6,13 +6,18 @@ function SideBar({
   handleSearchInput,
   filteredData,
   filteredRating,
-  handleClick,
+  filterRatings,
   filterByIndividualDate,
   filterByCountry,
   filterByVer,
   ratingsCount,
   countriesCount,
   versionsCount,
+  rating,
+  version,
+  versions,
+  country,
+  countries,
 }) {
   return (
     <div className="sidebar p-3 ">
@@ -34,10 +39,7 @@ function SideBar({
       <div className="filterByRating mt-4">
         <h6>Filter by rating</h6>
         <ul className="list-unstyled">
-          <li
-            onClick={() => handleClick(5)}
-            className="d-flex justify-content-between"
-          >
+          <li onClick={() => filterRatings(5)}>
             <div>
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>{" "}
@@ -45,49 +47,47 @@ function SideBar({
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>
             </div>
-            <span>{ratingsCount[4]}</span>
+            <span className={rating == 5 ? "font-weight-bold" : null}>
+              {ratingsCount[4]}
+            </span>
           </li>
-          <li
-            onClick={() => handleClick(4)}
-            className="d-flex justify-content-between"
-          >
+          <li onClick={() => filterRatings(4)} className="">
             <div>
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>
             </div>
-            <span>{ratingsCount[3]}</span>
+            <span className={rating == 4 ? "font-weight-bold" : null}>
+              {ratingsCount[3]}
+            </span>
           </li>
-          <li
-            onClick={() => handleClick(3)}
-            className="d-flex justify-content-between"
-          >
+          <li onClick={() => filterRatings(3)} className="">
             <div>
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>
             </div>
-            <span>{ratingsCount[2]}</span>
+            <span className={rating == 3 ? "font-weight-bold" : null}>
+              {ratingsCount[2]}
+            </span>
           </li>
-          <li
-            onClick={() => handleClick(2)}
-            className="d-flex justify-content-between"
-          >
+          <li onClick={() => filterRatings(2)} className="">
             <div>
               <i class="fa fa-star text-warning"></i>{" "}
               <i class="fa fa-star text-warning"></i>
             </div>
-            <span>{ratingsCount[1]}</span>
+            <span className={rating == 2 ? "font-weight-bold" : null}>
+              {ratingsCount[1]}
+            </span>
           </li>
-          <li
-            onClick={() => handleClick(1)}
-            className="d-flex justify-content-between"
-          >
+          <li onClick={() => filterRatings(1)} className="">
             <div>
               <i class="fa fa-star text-warning"></i>{" "}
             </div>
-            <span>{ratingsCount[0]}</span>
+            <span className={rating == 1 ? "font-weight-bold" : null}>
+              {ratingsCount[0]}
+            </span>
           </li>
         </ul>
       </div>
@@ -95,28 +95,44 @@ function SideBar({
       <div className="filterByVersion mt-3">
         <h6>Filter by version</h6>
         <ul className="list-unstyled">
-          <li onClick={() => filterByVer("v1.1")}>
+          <li onClick={() => filterByVer(versions[0])}>
             <div className="versions">
-              <div>v1.1</div>
-              <div>{versionsCount[0]}</div>
+              <div>{versions[0]}</div>
+              <div
+                className={version == versions[0] ? "font-weight-bold" : null}
+              >
+                {versionsCount[0]}
+              </div>
             </div>
           </li>
-          <li onClick={() => filterByVer("v1.2.1")}>
+          <li onClick={() => filterByVer(versions[1])}>
             <div className="versions">
-              <div>v1.2.1</div>
-              <div>{versionsCount[1]}</div>
+              <div>{versions[1]}</div>
+              <div
+                className={version == versions[1] ? "font-weight-bold" : null}
+              >
+                {versionsCount[1]}
+              </div>
             </div>
           </li>
-          <li onClick={() => filterByVer("v0.1")}>
+          <li onClick={() => filterByVer(versions[2])}>
             <div className="versions">
-              <div>v0.1</div>
-              <div>{versionsCount[2]}</div>
+              <div>{versions[2]}</div>
+              <div
+                className={version == versions[2] ? "font-weight-bold" : null}
+              >
+                {versionsCount[2]}
+              </div>
             </div>
           </li>
-          <li onClick={() => filterByVer("v1.0")}>
+          <li onClick={() => filterByVer(versions[3])}>
             <div className="versions">
-              <div>v1.0</div>
-              <div>{versionsCount[3]}</div>
+              <div>{versions[3]}</div>
+              <div
+                className={version == versions[3] ? "font-weight-bold" : null}
+              >
+                {versionsCount[3]}
+              </div>
             </div>
           </li>
         </ul>
@@ -125,40 +141,52 @@ function SideBar({
       <div className="filterByCountry mt-3">
         <h6>Filter by Country</h6>
         <ul className="list-unstyled">
-          <li onClick={() => filterByCountry("India")}>
+          <li onClick={() => filterByCountry(countries[0])}>
             <div className="countries">
               <div>
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/555/555462.svg"
                   width="25"
                 ></img>{" "}
-                India
+                {countries[0]}
               </div>
-              <div>{countriesCount[0]}</div>
+              <div
+                className={country == countries[0] ? "font-weight-bold" : null}
+              >
+                {countriesCount[0]}
+              </div>
             </div>
           </li>
-          <li onClick={() => filterByCountry("US")}>
+          <li onClick={() => filterByCountry(countries[1])}>
             <div className="countries">
               <div>
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/206/206626.svg"
                   width="25"
                 ></img>{" "}
-                United States
+                {countries[1]}
               </div>{" "}
-              <div> {countriesCount[1]}</div>
+              <div
+                className={country == countries[1] ? "font-weight-bold" : null}
+              >
+                {countriesCount[1]}
+              </div>
             </div>
           </li>
-          <li onClick={() => filterByCountry("UK")}>
+          <li onClick={() => filterByCountry(countries[2])}>
             <div className="countries">
               <div>
                 <img
                   src="https://www.flaticon.com/svg/static/icons/svg/555/555417.svg"
                   width="25"
                 ></img>{" "}
-                United Kingdom
+                {countries[2]}
               </div>
-              <div> {countriesCount[2]}</div>
+              <div
+                className={country == countries[2] ? "font-weight-bold" : null}
+              >
+                {countriesCount[2]}
+              </div>
             </div>
           </li>
         </ul>

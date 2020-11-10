@@ -8,9 +8,19 @@ li {
   cursor: pointer;
 }
 
+.filterByRating > ul > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .countries,
 .versions {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.active {
+  border: 1px solid #eee;
 }

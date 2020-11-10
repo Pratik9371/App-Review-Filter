@@ -24,6 +24,8 @@ class App extends Component {
       countriesCount: [],
       versions: ["v1.1", "v1.2.1", "v0.1", "v1.0"],
       versionsCount: [],
+      version: "",
+      country: "",
     };
   }
 
@@ -95,6 +97,8 @@ class App extends Component {
     this.getRatings(result);
     this.getCountriesCount(result);
     this.getVersionCount(result);
+
+    this.setState({ version: "", country: "", rating: "" });
   };
 
   handleSearchInput = (e) => {
@@ -107,11 +111,14 @@ class App extends Component {
     this.getRatings(result);
     this.getCountriesCount(result);
     this.getVersionCount(result);
+
+    this.setState({ version: "", country: "", rating: "" });
   };
 
-  handleClick = (rating) => {
+  filterRatings = (rating) => {
     const { reviews, dropdownValue, searchValue } = this.state;
     this.setState({ rating: rating });
+    this.setState({ version: "", country: "" });
 
     const result = this.getApp().filter((name) => name.rating == rating);
     this.setState({ reviews: result });
@@ -149,12 +156,15 @@ class App extends Component {
   filterByCountry = (country) => {
     const { filteredData, dropdownValue, searchValue, reviews } = this.state;
     this.setState({ country: country });
+    this.setState({ version: "", rating: "" });
 
     const result = this.getApp().filter((data) => data.countryName == country);
     this.setState({ reviews: result });
   };
 
   filterByVer = (version) => {
+    this.setState({ version: version });
+    this.setState({ rating: "", country: "" });
     //Calling the getApp function which return the current app name
     const result = this.getApp().filter(
       (name) => name.version.toLowerCase() == version.toLowerCase()
@@ -168,9 +178,14 @@ class App extends Component {
       dropdownValue,
       searchValue,
       reviews,
-      filteredData,
+      ratingsCount,
       rating,
       country,
+      version,
+      countriesCount,
+      versionsCount,
+      versions,
+      countries,
     } = this.state;
 
     return (
@@ -182,13 +197,18 @@ class App extends Component {
         <div className="app_body">
           <SideBar
             handleSearchInput={this.handleSearchInput}
-            handleClick={this.handleClick}
+            filterRatings={this.filterRatings}
             filterByIndividualDate={this.filterByIndividualDate}
             filterByCountry={this.filterByCountry}
             filterByVer={this.filterByVer}
-            ratingsCount={this.state.ratingsCount}
-            countriesCount={this.state.countriesCount}
-            versionsCount={this.state.versionsCount}
+            ratingsCount={ratingsCount}
+            countriesCount={countriesCount}
+            versionsCount={versionsCount}
+            rating={rating}
+            version={version}
+            versions={versions}
+            country={country}
+            countries={countries}
           />
           <Reviews
             reviews={reviews}
